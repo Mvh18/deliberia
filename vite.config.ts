@@ -29,7 +29,17 @@ export default defineConfig({
         }),
     ]),
     server: {
+        // Dentro de Docker (compose.yaml) Vite debe escuchar en 0.0.0.0 y,
+        // con bind mounts de Windows, usar polling para detectar cambios.
+        host: process.env.VITE_HOST ?? undefined,
+        port: process.env.VITE_PORT ? Number(process.env.VITE_PORT) : undefined,
+        strictPort: process.env.VITE_HOST !== undefined,
+        // El navegador no debe usar 0.0.0.0: se anuncia siempre localhost.
+        origin: process.env.VITE_HOST
+            ? `http://localhost:${process.env.VITE_PORT ?? 5173}`
+            : undefined,
         watch: {
+            usePolling: process.env.VITE_USE_POLLING === 'true',
             ignored: [
                 '**/.agents/**',
                 '**/.claude/**',

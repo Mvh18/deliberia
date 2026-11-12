@@ -17,11 +17,11 @@
 
 ## 3. Entorno Docker de un solo comando
 
-- [ ] 3.1 Crear `docker/php/Dockerfile` (PHP compatible con Laravel 13 con `pdo_pgsql`, `redis`, `intl`, `zip`, `pcntl`, Composer) usuario no-root; decidir PHP 8.4 vs 8.5 y anotarlo para ADR-0001
-- [ ] 3.2 Crear `docker/entrypoint.sh` idempotente: copiar `.env.example` → `.env` si falta, `composer install`, `key:generate` solo si `APP_KEY` vacío, esperar BD, `migrate --force`
-- [ ] 3.3 Crear `compose.yaml` con `app`, `worker`, `db` (postgres:17-alpine, healthcheck, volumen nombrado), `redis`, `vite` (node:24, `npm ci` + `npm run dev`); volúmenes nombrados para `vendor` y `node_modules`; todos los puertos en `127.0.0.1`
-- [ ] 3.4 Configurar Vite para HMR dentro de Docker (host `0.0.0.0`, `hmr.host=localhost`)
-- [ ] 3.5 Crear `Makefile` (`up`, `down`, `logs`, `shell`, `test`, `lint`, `fix`, `user`, `fresh`) que solo envuelva `docker compose`
+- [x] 3.1 Crear `docker/php/Dockerfile` (PHP compatible con Laravel 13 con `pdo_pgsql`, `redis`, `intl`, `zip`, `pcntl`, Composer) usuario no-root; decidir PHP 8.4 vs 8.5 y anotarlo para ADR-0001
+- [x] 3.2 Crear `docker/entrypoint.sh` idempotente: copiar `.env.example` → `.env` si falta, `composer install`, `key:generate` solo si `APP_KEY` vacío, esperar BD, `migrate --force`
+- [x] 3.3 Crear `compose.yaml` con `app`, `worker`, `db` (postgres:17-alpine, healthcheck, volumen nombrado), `redis`, `vite` (node:24, `npm ci` + `npm run dev`); volúmenes nombrados para `vendor` y `node_modules`; todos los puertos en `127.0.0.1`
+- [x] 3.4 Configurar Vite para HMR dentro de Docker (host `0.0.0.0`, `hmr.host=localhost`)
+- [x] 3.5 Crear `Makefile` (`up`, `down`, `logs`, `shell`, `test`, `lint`, `fix`, `user`, `fresh`) que solo envuelva `docker compose`
 - [ ] 3.6 Verificar desde clon limpio (`git clone` a carpeta temporal): `docker compose up` deja el login accesible; segundo arranque no sobrescribe `.env` ni `APP_KEY`
 - [ ] 3.7 Verificar que un job de prueba despachado se procesa en el worker (test manual documentado) y que HMR funciona
 - [ ] 3.8 Commit `build(docker): add one-command development environment`
