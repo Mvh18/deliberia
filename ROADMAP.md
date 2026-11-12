@@ -53,9 +53,25 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 
 **Pendiente de la Fase 0:** comprobar en GitHub que el CI *falla* ante un error provocado (hasta ahora solo se ha visto pasar en verde; los fallos se probaron en local), y completar las dos semanas de uso real.
 
-### Siguiente paso
+### Para continuar mañana
 
-Crear la issue epic de la Fase 0 (plantilla `epic`) y enlazarla en la tabla. Cuando se cumpla la fecha de uso real (2026-11-25), empezar la Fase 1 con `/opsx:propose-deep`.
+La Fase 0 está construida y publicada; lo que queda es cerrarla bien y esperar el periodo de uso real. Orden sugerido:
+
+1. **Levantar el entorno y crear tu usuario** (si no lo has hecho): `docker compose up -d --build --wait` y `docker compose exec app php artisan deliberia:user:create`; entra en <http://localhost:8100>.
+2. **Ajustes manuales pendientes en GitHub:**
+   - Settings → Emails → activar *Block command line pushes that expose my email*.
+   - Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`).
+   - Security → activar *Dependabot security updates* (hoy figuran desactivadas).
+3. **Revisar los 3 PRs de Dependabot** ya abiertos en GitHub. Aceptar uno solo si el CI pasa en verde:
+   - `#1` PHP 8.4 → 8.5 en la imagen de Docker (cambio mayor; si se acepta, actualizar también `PHP_VERSION` en `.github/workflows/ci.yml` y ADR-0001).
+   - `#2` PHPUnit 12 → 13 (cambio mayor).
+   - `#3` actualizaciones de npm (8 paquetes).
+4. **Comprobar que el CI falla de verdad** (último criterio de la Fase 0): crear una rama con un error de formato o un test roto, verificar que el CI se pone en rojo, y borrar la rama. Después marcar el criterio en la sección de la Fase 0 y actualizar el contador de la tabla (4 / 4).
+5. **Crear la issue epic de la Fase 0** con la plantilla `epic`, enlazarla en la columna *Epic* de la tabla y guardar ahí las sub-issues si hace falta.
+6. **Usar la app** hasta el **2026-11-25**. Es el periodo de uso real que exige la regla de las dos semanas.
+7. **2026-11-25 en adelante:** pasar la Fase 0 a `terminada`, archivar el change (`/opsx:archive`) y empezar la Fase 1 con `/opsx:propose-deep`. No se empieza antes: el ROADMAP pide completar los criterios y el uso real de la fase anterior.
+
+Referencia rápida de cómo retomar el trabajo cada día: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
 ---
 
