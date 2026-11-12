@@ -1,0 +1,10 @@
+# Extiende las reglas por defecto de gitleaks.
+# Añade excepciones SOLO con una justificación por entrada.
+title = "Deliberia gitleaks config"
+
+[extend]
+useDefault = true
+
+# [[allowlists]]
+# description = "Justificación obligatoria"
+# paths = ['''ruta/al/archivo''']
