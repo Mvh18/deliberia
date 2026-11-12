@@ -26,7 +26,7 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 
 | Fase | Estado | Change de OpenSpec | Epic en GitHub | Inicio de uso real |
 |---|---|---|---|---|
-| 0 — Fundaciones | en curso | `phase-0-foundations` | — | — |
+| 0 — Fundaciones | en uso real | `phase-0-foundations` | — | 2026-11-11 (hasta 2026-11-25) |
 | 1 — MVP: biblioteca y práctica externa | pendiente | — | — | — |
 | 2 — Seguimiento real del video | pendiente | — | — | — |
 | 3 — Retención | pendiente | — | — | — |
