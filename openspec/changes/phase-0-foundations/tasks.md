@@ -43,7 +43,7 @@
 - [x] 5.3 Mantener PHPUnit (el del kit, decisión del usuario); `phpunit.xml` apuntando a Postgres (`deliberia_test`) creado por el entorno Docker
 - [x] 5.4 Revisar `vp check` y `tsc --noEmit` del kit (formato limitado al código); scripts npm `check` y `types:check`
 - [x] 5.5 Scripts composer `lint:check`, `types:check`, `test` y npm `check`, `types:check` como fuente única; `make lint` / `make test` los invocan
-- [ ] 5.6 Documentar en ADR-0001 la convención de integraciones externas detrás de interfaces con fakes en tests
+- [x] 5.6 Documentar en ADR-0001 la convención de integraciones externas detrás de interfaces con fakes en tests
 - [x] 5.7 Commit `chore(quality): configure formatting, static analysis and tests`
 
 ## 6. CI en GitHub Actions
@@ -57,13 +57,13 @@
 
 ## 7. Documentación, ADRs y archivos open source
 
-- [ ] 7.1 `docs/adr/0000-template.md`, `0001-stack.md` (Laravel 13, Inertia React, Postgres, Redis, Docker propio, versión PHP, calidad, integraciones con fakes; alternativas) y `0002-secrets-and-workflow.md` (capas de protección, noreply, GitHub Flow, Conventional Commits, fase→change→epic)
-- [ ] 7.2 `docs/WORKFLOW.md`: jerarquía fase → change OpenSpec → issue epic → sub-issues → ramas → PR → archivado; sección "Retomar el trabajo"; sección "Cerrar la jornada"; checklist de auditoría previa a publicar; pasos manuales en GitHub (secret scanning, push protection, private vulnerability reporting, bloquear emails en push)
-- [ ] 7.3 Añadir sección "Estado" a `ROADMAP.md` (tabla fase / estado / change OpenSpec / epic GitHub / inicio uso real) con Fase 0 "en curso" → `phase-0-foundations`, y enlace a `docs/WORKFLOW.md` en "Cómo usar este documento"
-- [ ] 7.4 `README.md`: qué es Deliberia, requisitos (Docker), arranque en un comando, crear usuario, comandos `make`, alternativa sin make para Windows, instalar hooks, enlaces a ROADMAP/WORKFLOW/ADRs
-- [ ] 7.5 `LICENSE` (MIT, titular confirmado por el usuario, sin correo), `SECURITY.md` (Private Vulnerability Reporting, sin correo), `CONTRIBUTING.md` breve
-- [ ] 7.6 `.github/ISSUE_TEMPLATE/` (epic, feat, bug, chore, spike adaptadas de `.claude/skills/release-plan/issue-templates/`, `config.yml` con `blank_issues_enabled: false`), `.github/pull_request_template.md`, `.github/dependabot.yml` (composer, npm, github-actions, docker; semanal)
-- [ ] 7.7 Rellenar `openspec/config.yaml` con contexto del proyecto (stack, convenciones, idioma, requisitos no negociables)
+- [x] 7.1 `docs/adr/0000-template.md`, `0001-stack.md` (Laravel 13, Inertia React, Postgres, Redis, Docker propio, versión PHP, calidad, integraciones con fakes; alternativas) y `0002-secrets-and-workflow.md` (capas de protección, noreply, GitHub Flow, Conventional Commits, fase→change→epic)
+- [x] 7.2 `docs/WORKFLOW.md`: jerarquía fase → change OpenSpec → issue epic → sub-issues → ramas → PR → archivado; sección "Retomar el trabajo"; sección "Cerrar la jornada"; checklist de auditoría previa a publicar; pasos manuales en GitHub (secret scanning, push protection, private vulnerability reporting, bloquear emails en push)
+- [x] 7.3 Añadir sección "Estado" a `ROADMAP.md` (tabla fase / estado / change OpenSpec / epic GitHub / inicio uso real) con Fase 0 "en curso" → `phase-0-foundations`, y enlace a `docs/WORKFLOW.md` en "Cómo usar este documento"
+- [x] 7.4 `README.md`: qué es Deliberia, requisitos (Docker), arranque en un comando, crear usuario, comandos `make`, alternativa sin make para Windows, instalar hooks, enlaces a ROADMAP/WORKFLOW/ADRs
+- [x] 7.5 `LICENSE` (MIT, titular confirmado por el usuario, sin correo), `SECURITY.md` (Private Vulnerability Reporting, sin correo), `CONTRIBUTING.md` breve
+- [x] 7.6 `.github/ISSUE_TEMPLATE/` (epic, feat, bug, chore, spike adaptadas de `.claude/skills/release-plan/issue-templates/`, `config.yml` con `blank_issues_enabled: false`), `.github/pull_request_template.md`, `.github/dependabot.yml` (composer, npm, github-actions, docker; semanal)
+- [x] 7.7 Rellenar `openspec/config.yaml` con contexto del proyecto (stack, convenciones, idioma, requisitos no negociables)
 - [ ] 7.8 Commit `docs: add ADRs, workflow guide and open source files`
 
 ## 8. Auditoría previa a la publicación (BLOQUEANTE antes del primer push)

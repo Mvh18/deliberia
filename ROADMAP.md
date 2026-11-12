@@ -15,6 +15,23 @@ Este documento describe **qué** se va a construir y **por qué**. No define **c
 - **Respeta el alcance.** Cada fase indica lo que queda fuera. Si una tarea parece requerir algo de una fase futura, señálalo en lugar de implementarlo.
 - **Las restricciones de la sección "Requisitos no negociables" aplican a todas las fases.**
 - Si una decisión no está cubierta aquí ni en la skill de diseño, pregunta antes de asumir.
+- **Estado y continuidad:** el estado de cada fase está en la tabla de abajo. Para retomar el trabajo, ver [docs/WORKFLOW.md](docs/WORKFLOW.md). Cada fase se convierte en un change de OpenSpec (el epic) con su `tasks.md`.
+
+---
+
+## Estado
+
+Fuente de verdad del avance. Actualizar al empezar y al cerrar cada fase.
+Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa con contenido real durante dos semanas) → `terminada`.
+
+| Fase | Estado | Change de OpenSpec | Epic en GitHub | Inicio de uso real |
+|---|---|---|---|---|
+| 0 — Fundaciones | en curso | `phase-0-foundations` | — | — |
+| 1 — MVP: biblioteca y práctica externa | pendiente | — | — | — |
+| 2 — Seguimiento real del video | pendiente | — | — | — |
+| 3 — Retención | pendiente | — | — | — |
+| 4 — Práctica interactiva | pendiente | — | — | — |
+| 5 — Avanzado | pendiente | — | — | — |
 
 ---
 

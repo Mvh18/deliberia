@@ -71,7 +71,7 @@ Servicios de `compose.yaml`:
 | Formato y lint JS/TS | Vite+ (`vp check`: oxlint + oxfmt) | config del starter kit; limitado al código (no formatea docs ni `.claude/`) |
 | Tipos | `tsc --noEmit` | strict |
 
-> Decisión (implementación, 2026-11-12): se adoptan las herramientas del starter kit oficial de Laravel 13 en lugar de Pest, ESLint y Prettier, para no mantener dependencias extra ni divergir del kit.
+> Decisión (implementación, 2026-11-11): se adoptan las herramientas del starter kit oficial de Laravel 13 en lugar de Pest, ESLint y Prettier, para no mantener dependencias extra ni divergir del kit.
 
 Los scripts de `composer` (`lint:check`, `types:check`, `test`) y de `npm` (`check`, `types:check`) son la **única** fuente de verdad. CI, el Makefile y los hooks los invocan, nunca duplican flags.
 
