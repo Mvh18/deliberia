@@ -21,17 +21,41 @@ Este documento describe **qué** se va a construir y **por qué**. No define **c
 
 ## Estado
 
-Fuente de verdad del avance. Actualizar al empezar y al cerrar cada fase.
+Fuente de verdad del avance. Actualizar al empezar y al cerrar cada fase, y al marcar criterios de aceptación.
 Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa con contenido real durante dos semanas) → `terminada`.
 
-| Fase | Estado | Change de OpenSpec | Epic en GitHub | Inicio de uso real |
-|---|---|---|---|---|
-| 0 — Fundaciones | en uso real | `phase-0-foundations` | — | 2026-11-11 (hasta 2026-11-25) |
-| 1 — MVP: biblioteca y práctica externa | pendiente | — | — | — |
-| 2 — Seguimiento real del video | pendiente | — | — | — |
-| 3 — Retención | pendiente | — | — | — |
-| 4 — Práctica interactiva | pendiente | — | — | — |
-| 5 — Avanzado | pendiente | — | — | — |
+*Última actualización: 2026-11-11.*
+
+### Progreso por fase
+
+| Fase | Estado | Progreso | Tareas | Criterios de aceptación | Change de OpenSpec | Epic | Uso real |
+|---|---|---|---|---|---|---|---|
+| 0 — Fundaciones | en uso real | `██████████` 100 % | 54 / 54 | 3 / 4 | `phase-0-foundations` | — | 2026-11-11 → 2026-11-25 |
+| 1 — MVP: biblioteca y práctica externa | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 7 | — | — | — |
+| 2 — Seguimiento real del video | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 6 | — | — | — |
+| 3 — Retención | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
+| 4 — Práctica interactiva | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 5 | — | — | — |
+| 5 — Avanzado | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
+
+**Progreso** = tareas del `tasks.md` del change completadas. **Criterios** = casillas de la sección "Criterios de aceptación" de cada fase, más abajo en este documento. Una fase no se da por terminada hasta cumplir todos sus criterios y haberse usado con contenido real durante dos semanas.
+
+### Fase 0 — Fundaciones: lo hecho
+
+| Área | Resultado |
+|---|---|
+| Aplicación | Laravel 13 con Inertia 3 + React 19 + TypeScript + Tailwind 4 + shadcn/ui (starter kit oficial), PostgreSQL 17 y Redis 7 |
+| Entorno | Docker Compose propio (app, worker de colas, Vite, Postgres, Redis); se levanta con `docker compose up -d --build --wait`; puertos solo en `127.0.0.1` |
+| Autenticación | Login y logout con Fortify; registro deshabilitado (`/register` responde 404); usuarios con `php artisan deliberia:user:create`; toda la app exige sesión |
+| Calidad | Pint, Larastan nivel 8, PHPUnit (56 tests contra PostgreSQL real), Vite+ (`vp check`) y `tsc` |
+| CI | GitHub Actions en cada push y PR: gitleaks, calidad PHP, calidad frontend, tests y build; en verde desde el primer push |
+| Seguridad del repo | `.gitignore` estricto, hooks de pre-commit (gitleaks, claves privadas, Pint, Conventional Commits), commits con correo noreply, auditoría previa a publicar, `SECURITY.md`, secret scanning y push protection |
+| Proceso | GitHub Flow, ADR-0001 (stack) y ADR-0002 (secretos y flujo), [docs/WORKFLOW.md](docs/WORKFLOW.md), plantillas de issue y PR, Dependabot, licencia MIT |
+
+**Pendiente de la Fase 0:** comprobar en GitHub que el CI *falla* ante un error provocado (hasta ahora solo se ha visto pasar en verde; los fallos se probaron en local), y completar las dos semanas de uso real.
+
+### Siguiente paso
+
+Crear la issue epic de la Fase 0 (plantilla `epic`) y enlazarla en la tabla. Cuando se cumpla la fecha de uso real (2026-11-25), empezar la Fase 1 con `/opsx:propose-deep`.
 
 ---
 
@@ -118,10 +142,10 @@ Aplican a todas las fases.
 
 ### Criterios de aceptación
 
-- [ ] Cualquier persona puede levantar el proyecto con un solo comando siguiendo el README.
-- [ ] Se puede iniciar y cerrar sesión.
-- [ ] El CI falla si hay errores de formato, de análisis estático o tests rotos.
-- [ ] Existe al menos un ADR con las decisiones iniciales del stack.
+- [x] Cualquier persona puede levantar el proyecto con un solo comando siguiendo el README.
+- [x] Se puede iniciar y cerrar sesión.
+- [ ] El CI falla si hay errores de formato, de análisis estático o tests rotos. *(configurado y en verde; falta provocar un fallo en GitHub para comprobarlo)*
+- [x] Existe al menos un ADR con las decisiones iniciales del stack.
 
 ---
 

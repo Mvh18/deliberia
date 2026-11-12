@@ -64,7 +64,7 @@
 - [x] 7.5 `LICENSE` (MIT, titular confirmado por el usuario, sin correo), `SECURITY.md` (Private Vulnerability Reporting, sin correo), `CONTRIBUTING.md` breve
 - [x] 7.6 `.github/ISSUE_TEMPLATE/` (epic, feat, bug, chore, spike adaptadas de `.claude/skills/release-plan/issue-templates/`, `config.yml` con `blank_issues_enabled: false`), `.github/pull_request_template.md`, `.github/dependabot.yml` (composer, npm, github-actions, docker; semanal)
 - [x] 7.7 Rellenar `openspec/config.yaml` con contexto del proyecto (stack, convenciones, idioma, requisitos no negociables)
-- [ ] 7.8 Commit `docs: add ADRs, workflow guide and open source files`
+- [x] 7.8 Commit `docs: add ADRs, workflow guide and open source files`
 
 ## 8. Auditoría previa a la publicación (BLOQUEANTE antes del primer push)
 
