@@ -11,8 +11,8 @@ APP     := $(COMPOSE) exec app
 help: ## Muestra esta ayuda
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-8s %s\n", $$1, $$2}'
 
-up: ## Levanta todo el entorno (equivale a: docker compose up -d --build)
-	$(COMPOSE) up -d --build
+up: ## Levanta todo el entorno (docker compose up -d --build --wait)
+	$(COMPOSE) up -d --build --wait
 
 down: ## Detiene el entorno (conserva los datos)
 	$(COMPOSE) down

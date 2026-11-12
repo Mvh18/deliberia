@@ -54,6 +54,12 @@ services:
       - .:/var/www/html
       - vendor:/var/www/html/vendor
       - node_modules:/var/www/html/node_modules
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:$VITE_PORT/@vite/client > /dev/null"]
+      interval: 5s
+      timeout: 3s
+      retries: 90
+      start_period: 120s
     depends_on:
       app:
         condition: service_healthy

@@ -22,9 +22,9 @@
 - [x] 3.3 Crear `compose.yaml` con `app`, `worker`, `db` (postgres:17-alpine, healthcheck, volumen nombrado), `redis`, `vite` (node:24, `npm ci` + `npm run dev`); volúmenes nombrados para `vendor` y `node_modules`; todos los puertos en `127.0.0.1`
 - [x] 3.4 Configurar Vite para HMR dentro de Docker (host `0.0.0.0`, `hmr.host=localhost`)
 - [x] 3.5 Crear `Makefile` (`up`, `down`, `logs`, `shell`, `test`, `lint`, `fix`, `user`, `fresh`) que solo envuelva `docker compose`
-- [ ] 3.6 Verificar desde clon limpio (`git clone` a carpeta temporal): `docker compose up` deja el login accesible; segundo arranque no sobrescribe `.env` ni `APP_KEY`
-- [ ] 3.7 Verificar que un job de prueba despachado se procesa en el worker (test manual documentado) y que HMR funciona
-- [ ] 3.8 Commit `build(docker): add one-command development environment`
+- [x] 3.6 Verificar desde clon limpio (`git clone` a carpeta temporal): `docker compose up` deja el login accesible; segundo arranque no sobrescribe `.env` ni `APP_KEY`
+- [x] 3.7 Verificar que un job de prueba despachado se procesa en el worker (test manual documentado) y que HMR funciona
+- [x] 3.8 Commit `build(docker): add one-command development environment`
 
 ## 4. Autenticación sin registro
 
