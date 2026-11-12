@@ -6,14 +6,14 @@
 - [x] 1.4 Revisar `.claude/` en busca de rutas personales, correos o tokens antes de versionarlo; eliminar la carpeta duplicada `openspec-apply-change copy`
 - [x] 1.5 Crear `.pre-commit-config.yaml` con gitleaks (versión fijada), `detect-private-key`, `check-added-large-files`, `check-merge-conflict`, `end-of-file-fixer` y hook `commit-msg` de Conventional Commits; crear `.gitleaks.toml` extendiendo reglas por defecto
 - [x] 1.6 `pre-commit install --hook-type pre-commit --hook-type commit-msg` y verificar: un token falso de GitHub en un archivo de prueba bloquea el commit; el mensaje "cambios varios" es rechazado
-- [ ] 1.7 Primer commit `chore: initialize repository with security baseline` (solo ROADMAP, openspec, .claude, ignores y hooks) y verificar autor con `git log --format='%ae %ce'`
+- [x] 1.7 Primer commit `chore: initialize repository with security baseline` (solo ROADMAP, openspec, .claude, ignores y hooks) y verificar autor con `git log --format='%ae %ce'`
 
 ## 2. Esqueleto Laravel 13 + Inertia React
 
-- [ ] 2.1 Generar el starter kit oficial de React de Laravel 13 dentro de un contenedor temporal (sin depender del PHP del host) en un directorio aparte y moverlo a la raíz conservando ROADMAP, openspec y .claude
-- [ ] 2.2 Configurar PostgreSQL y Redis como defaults (`DB_CONNECTION=pgsql`, `QUEUE_CONNECTION=redis`, `CACHE_STORE=redis`, `SESSION_DRIVER=redis` o `database`) y revisar `.env.example`: sin secretos, `APP_KEY` vacío, `MAIL_MAILER=log`, `MAIL_FROM_ADDRESS=hello@example.com`, comentarios en valores solo-dev
-- [ ] 2.3 Fijar nombre de app "Deliberia" en config y UI básica del kit
-- [ ] 2.4 Commit `feat: scaffold Laravel 13 with Inertia React starter kit`
+- [x] 2.1 Generar el starter kit oficial de React de Laravel 13 dentro de un contenedor temporal (sin depender del PHP del host) en un directorio aparte y moverlo a la raíz conservando ROADMAP, openspec y .claude
+- [x] 2.2 Configurar PostgreSQL y Redis como defaults (`DB_CONNECTION=pgsql`, `QUEUE_CONNECTION=redis`, `CACHE_STORE=redis`, `SESSION_DRIVER=redis` o `database`) y revisar `.env.example`: sin secretos, `APP_KEY` vacío, `MAIL_MAILER=log`, `MAIL_FROM_ADDRESS=hello@example.com`, comentarios en valores solo-dev
+- [x] 2.3 Fijar nombre de app "Deliberia" en config y UI básica del kit
+- [x] 2.4 Commit `feat: scaffold Laravel 13 with Inertia React starter kit`
 
 ## 3. Entorno Docker de un solo comando
 
