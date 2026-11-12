@@ -48,12 +48,12 @@
 
 ## 6. CI en GitHub Actions
 
-- [ ] 6.1 Crear `.github/workflows/ci.yml`: `on: push` + `pull_request` a main, `permissions: contents: read`, `concurrency` por rama
-- [ ] 6.2 Job `secrets`: checkout `fetch-depth: 0` + gitleaks sobre historial completo (versión fijada)
-- [ ] 6.3 Job `php-quality` (Pint `--test`, Larastan) y job `js-quality` (`vp check`, `tsc`) con caché
-- [ ] 6.4 Job `tests` con service containers postgres:17 y redis; PHPUnit + `npm run build`
-- [ ] 6.5 Validar localmente el workflow (p. ej. `act` si disponible o revisión con `actionlint`) y dejar comprobación real para tras el primer push
-- [ ] 6.6 Commit `ci: add quality and secret scanning pipeline`
+- [x] 6.1 Crear `.github/workflows/ci.yml`: `on: push` + `pull_request` a main, `permissions: contents: read`, `concurrency` por rama
+- [x] 6.2 Job `secrets`: checkout `fetch-depth: 0` + gitleaks sobre historial completo (versión fijada)
+- [x] 6.3 Job `php-quality` (Pint `--test`, Larastan) y job `js-quality` (`vp check`, `tsc`) con caché
+- [x] 6.4 Job `tests` con service containers postgres:17 y redis; PHPUnit + `npm run build`
+- [x] 6.5 Validar localmente el workflow (p. ej. `act` si disponible o revisión con `actionlint`) y dejar comprobación real para tras el primer push
+- [x] 6.6 Commit `ci: add quality and secret scanning pipeline`
 
 ## 7. Documentación, ADRs y archivos open source
 
