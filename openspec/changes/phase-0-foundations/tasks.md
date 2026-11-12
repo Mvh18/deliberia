@@ -68,10 +68,10 @@
 
 ## 8. Auditoría previa a la publicación (BLOQUEANTE antes del primer push)
 
-- [ ] 8.1 `gitleaks git` sobre el historial completo y `gitleaks dir` sobre el árbol de trabajo: cero hallazgos
-- [ ] 8.2 Autores/committers de todo el historial: solo noreply de GitHub / co-autoría noreply
-- [ ] 8.3 Búsqueda de correos en archivos versionados (`git grep -E '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'`): solo dominios reservados/noreply
-- [ ] 8.4 Revisión manual de `git ls-files`: sin `.env`, dumps, claves, logs ni archivos locales de herramientas
-- [ ] 8.5 Verificación final desde clon limpio: arranque en un comando, `make user`, login/logout, `make lint` y `make test` en verde
-- [ ] 8.6 Entregar al usuario los pasos para crear el repo vacío en GitHub, `git remote add origin` + `git push -u origin main`, y activar secret scanning, push protection y private vulnerability reporting
+- [x] 8.1 `gitleaks git` sobre el historial completo y `gitleaks dir` sobre el árbol de trabajo: cero hallazgos
+- [x] 8.2 Autores/committers de todo el historial: solo noreply de GitHub / co-autoría noreply
+- [x] 8.3 Búsqueda de correos en archivos versionados (`git grep -E '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'`): solo dominios reservados/noreply
+- [x] 8.4 Revisión manual de `git ls-files`: sin `.env`, dumps, claves, logs ni archivos locales de herramientas
+- [x] 8.5 Verificación final desde clon limpio: arranque en un comando, `make user`, login/logout, `make lint` y `make test` en verde
+- [x] 8.6 Entregar al usuario los pasos para crear el repo vacío en GitHub, `git remote add origin` + `git push -u origin main`, y activar secret scanning, push protection y private vulnerability reporting
 - [ ] 8.7 Tras el push: confirmar CI verde en GitHub y actualizar la tabla de Estado (Fase 0 → "en uso real" con fecha)

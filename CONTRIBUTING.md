@@ -11,8 +11,8 @@ Requirements: Docker with Compose, Git and [pre-commit](https://pre-commit.com).
 ```bash
 git clone https://github.com/Mvh18/deliberia.git
 cd deliberia
-pre-commit install --hook-type pre-commit --hook-type commit-msg   # or: make hooks
-make up                                                            # or: docker compose up -d --build --wait
+pre-commit install --hook-type pre-commit --hook-type commit-msg
+docker compose up -d --build --wait    # or: make up
 ```
 
 More detail in the [README](README.md).
@@ -29,8 +29,9 @@ More detail in the [README](README.md).
 ## Before you push
 
 ```bash
-make test    # Pint, Larastan and the test suite
-make lint    # also runs the frontend checks
+docker compose exec app composer test       # Pint, Larastan and the test suite  (or: make test)
+docker compose exec vite npm run check       # frontend format and lint            (make lint runs all checks)
+docker compose exec vite npm run types:check # TypeScript
 ```
 
 CI runs the same checks plus a secret scan; it must be green before merging.

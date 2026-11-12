@@ -25,7 +25,7 @@ No necesitas PHP, Composer ni Node en tu máquina: todo corre en contenedores.
 ```bash
 git clone https://github.com/Mvh18/deliberia.git
 cd deliberia
-make up        # o, sin make: docker compose up -d --build --wait
+docker compose up -d --build --wait   # o, si tienes make: make up
 ```
 
 El primer arranque tarda un par de minutos: instala dependencias, crea el `.env` desde
@@ -39,7 +39,7 @@ Cuando termina, abre <http://localhost:8100>.
 El registro público está **deshabilitado**. Crea tu usuario desde la terminal:
 
 ```bash
-make user      # o: docker compose exec app php artisan deliberia:user:create
+docker compose exec app php artisan deliberia:user:create   # o: make user
 ```
 
 Te pedirá nombre, correo y contraseña (oculta). Para scripts, usa
@@ -71,15 +71,15 @@ Todos se publican solo en `127.0.0.1` y se pueden cambiar en tu `.env`
 | `make fresh` | Borra los datos y vuelve a migrar |
 | `make hooks` | Instala los hooks de pre-commit |
 
-Sin `make`, ejecuta directamente los comandos `docker compose ...` que aparecen en el
-[Makefile](Makefile).
+`make` es opcional (en Windows no viene instalado): cada comando es un envoltorio de
+`docker compose ...`, y el [Makefile](Makefile) muestra el equivalente de cada uno.
 
 ## Contribuir y trabajar en el proyecto
 
 Antes del primer commit instala los hooks (escanean secretos y validan los mensajes):
 
 ```bash
-make hooks     # o: pre-commit install --hook-type pre-commit --hook-type commit-msg
+pre-commit install --hook-type pre-commit --hook-type commit-msg   # o: make hooks
 ```
 
 - Flujo de trabajo, cómo retomar el trabajo y checklist de publicación: [docs/WORKFLOW.md](docs/WORKFLOW.md)
