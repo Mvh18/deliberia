@@ -28,13 +28,13 @@
 
 ## 4. Autenticación sin registro
 
-- [ ] 4.1 Desactivar `Features::registration()` en Fortify, eliminar rutas/páginas/enlaces de registro del frontend (login, welcome, layouts)
-- [ ] 4.2 Asegurar que todas las rutas de app están en el grupo `auth` y que existe una ruta de salud pública (`/up`)
-- [ ] 4.3 Implementar comando `deliberia:user:create` (interactivo con `password()` oculto + confirmación; opciones `--name`, `--email`, `--password-env`; validación email único y `Password::defaults()`)
-- [ ] 4.4 Eliminar la creación de usuarios con credenciales del `DatabaseSeeder`; factories con `example.com`
-- [ ] 4.5 Tests Pest: login válido, login inválido con mensaje genérico, rate limiting, logout, `GET/POST /register` → 404 sin crear usuario, login sin enlace de registro, ruta protegida redirige a login
-- [ ] 4.6 Tests Pest del comando: creación interactiva, por variable de entorno, email duplicado, contraseña débil
-- [ ] 4.7 Commit(s) `feat(auth): ...`
+- [x] 4.1 Desactivar `Features::registration()` en Fortify, eliminar rutas/páginas/enlaces de registro del frontend (login, welcome, layouts)
+- [x] 4.2 Asegurar que todas las rutas de app están en el grupo `auth` y que existe una ruta de salud pública (`/up`)
+- [x] 4.3 Implementar comando `deliberia:user:create` (interactivo con `password()` oculto + confirmación; opciones `--name`, `--email`, `--password-env`; validación email único y `Password::defaults()`)
+- [x] 4.4 Eliminar la creación de usuarios con credenciales del `DatabaseSeeder`; factories con `example.com`
+- [x] 4.5 Tests Pest: login válido, login inválido con mensaje genérico, rate limiting, logout, `GET/POST /register` → 404 sin crear usuario, login sin enlace de registro, ruta protegida redirige a login
+- [x] 4.6 Tests Pest del comando: creación interactiva, por variable de entorno, email duplicado, contraseña débil
+- [x] 4.7 Commit(s) `feat(auth): ...`
 
 ## 5. Herramientas de calidad
 
