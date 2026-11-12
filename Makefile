@@ -7,6 +7,7 @@
 
 COMPOSE := docker compose
 APP     := $(COMPOSE) exec app
+NODE    := $(COMPOSE) exec vite
 
 help: ## Muestra esta ayuda
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-8s %s\n", $$1, $$2}'
@@ -29,12 +30,12 @@ test: ## Ejecuta lint, análisis estático y tests (igual que el CI)
 lint: ## Comprueba formato y tipos sin modificar nada
 	$(APP) composer lint:check
 	$(APP) composer types:check
-	$(APP) npm run check
-	$(APP) npm run types:check
+	$(NODE) npm run check
+	$(NODE) npm run types:check
 
 fix: ## Corrige el formato automáticamente
 	$(APP) composer lint
-	$(APP) npm run check:fix
+	$(NODE) npm run check:fix
 
 user: ## Crea un usuario de forma interactiva
 	$(COMPOSE) exec app php artisan deliberia:user:create

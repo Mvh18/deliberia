@@ -75,6 +75,13 @@ export default defineConfig({
         htmlWhitespaceSensitivity: 'css',
         ignorePatterns: [
             '.github/**',
+            // Documentación y configuración de herramientas: se mantienen a mano.
+            '.claude/**',
+            'openspec/**',
+            'docs/**',
+            '*.md',
+            'compose.yaml',
+            '.pre-commit-config.yaml',
             'composer.json',
             'resources/js/components/ui/*',
             'resources/views/mail/*',

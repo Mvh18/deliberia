@@ -10,7 +10,7 @@ Además, el trabajo será incremental y diario: el ROADMAP.md debe funcionar com
 - **Docker Compose propio** (app, worker de colas, Postgres, Redis, Vite) que levanta todo con un solo comando, sin requerir PHP/Node en el host.
 - **Autenticación** con Fortify: login/logout, registro **deshabilitado**, primer usuario creado con el comando `php artisan deliberia:user:create` (interactivo o vía variables de entorno de un `.env` no versionado).
 - **Línea base de protección de datos sensibles**: `.gitignore` robusto, `.env.example` sin valores reales, gitleaks en hook pre-commit y en CI, correo noreply de GitHub en la configuración local del repo, auditoría completa del historial antes de publicar, `SECURITY.md`.
-- **Herramientas de calidad**: Pint, Larastan, Pest 4 (backend); ESLint, Prettier, `tsc` (frontend); hooks con el framework `pre-commit` (gitleaks, formato, commit-msg con Conventional Commits).
+- **Herramientas de calidad**: Pint, Larastan nivel 8 y PHPUnit (backend); Vite+ `vp check` y `tsc` (frontend), todo el del starter kit; hooks con el framework `pre-commit` (gitleaks, formato, commit-msg con Conventional Commits).
 - **CI en GitHub Actions** en cada push y PR: secretos, formato, análisis estático y tests contra Postgres.
 - **GitHub básico**: licencia MIT, Dependabot, plantillas de issue (feat/bug/chore/spike/epic) y de PR, instrucciones para activar secret scanning y push protection. Sin reglas de protección de rama complejas.
 - **Flujo de trabajo documentado**: GitHub Flow + Conventional Commits, `docs/adr/` con ADR-0001 (stack) y ADR-0002 (secretos y flujo de trabajo), `docs/WORKFLOW.md` (cómo retomar el trabajo), tabla de **Estado** en ROADMAP.md, y la convención "una fase = un change de OpenSpec = una issue epic".
@@ -30,7 +30,7 @@ Además, el trabajo será incremental y diario: el ROADMAP.md debe funcionar com
 ## Impact
 
 - Repositorio nuevo: se inicializa Git, se crea toda la estructura de la aplicación.
-- Dependencias: Laravel 13, Fortify, Inertia, React, Pest, Larastan, Pint, ESLint, Prettier; imágenes Docker de PHP, Postgres, Redis y Node; gitleaks y pre-commit como herramientas de desarrollo.
+- Dependencias: Laravel 13, Fortify, Inertia, React, PHPUnit, Larastan, Pint, Vite+; imágenes Docker de PHP, Postgres, Redis y Node; gitleaks y pre-commit como herramientas de desarrollo.
 - `ROADMAP.md` se modifica solo para añadir la sección de Estado (el contenido de producto no cambia).
 - El usuario debe proporcionar su correo noreply de GitHub antes del primer commit y crear el repositorio remoto en GitHub.
 - Fuera de alcance: cualquier funcionalidad de Fase 1, despliegue a producción, reglas de protección de rama, UI más allá del starter kit.

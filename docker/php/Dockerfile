@@ -11,6 +11,9 @@ RUN apt-get update \
     && docker-php-ext-enable redis \
     && rm -rf /var/lib/apt/lists/* /tmp/pear
 
+# PHP: más memoria que los 128M por defecto (PHPStan, Composer)
+RUN echo "memory_limit=1G" > /usr/local/etc/php/conf.d/zz-deliberia.ini
+
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -31,6 +34,9 @@ RUN mkdir -p /var/www/html/vendor /var/www/html/node_modules \
 
 COPY docker/entrypoint.sh /usr/local/bin/deliberia-entrypoint
 RUN chmod +x /usr/local/bin/deliberia-entrypoint
+
+# El código viene de un bind mount con otro propietario: evita "dubious ownership"
+RUN git config --system --add safe.directory /var/www/html
 
 USER app
 WORKDIR /var/www/html

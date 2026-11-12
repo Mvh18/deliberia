@@ -32,26 +32,26 @@
 - [x] 4.2 Asegurar que todas las rutas de app están en el grupo `auth` y que existe una ruta de salud pública (`/up`)
 - [x] 4.3 Implementar comando `deliberia:user:create` (interactivo con `password()` oculto + confirmación; opciones `--name`, `--email`, `--password-env`; validación email único y `Password::defaults()`)
 - [x] 4.4 Eliminar la creación de usuarios con credenciales del `DatabaseSeeder`; factories con `example.com`
-- [x] 4.5 Tests Pest: login válido, login inválido con mensaje genérico, rate limiting, logout, `GET/POST /register` → 404 sin crear usuario, login sin enlace de registro, ruta protegida redirige a login
-- [x] 4.6 Tests Pest del comando: creación interactiva, por variable de entorno, email duplicado, contraseña débil
+- [x] 4.5 Tests (PHPUnit): login válido, login inválido con mensaje genérico, rate limiting, logout, `GET/POST /register` → 404 sin crear usuario, login sin enlace de registro, ruta protegida redirige a login
+- [x] 4.6 Tests (PHPUnit) del comando: creación interactiva, por variable de entorno, email duplicado, contraseña débil
 - [x] 4.7 Commit(s) `feat(auth): ...`
 
 ## 5. Herramientas de calidad
 
-- [ ] 5.1 Instalar y configurar Pint (preset laravel) y añadir hook local de Pint en pre-commit (vía contenedor o binario de vendor)
-- [ ] 5.2 Instalar Larastan nivel 8 sin baseline y corregir hallazgos del código del kit
-- [ ] 5.3 Migrar/asegurar Pest 4; `phpunit.xml` apuntando a Postgres (`deliberia_test`) creado por el entorno Docker
-- [ ] 5.4 Revisar ESLint, Prettier y `tsc --noEmit` del kit; scripts npm `lint`, `format:check`, `types`
-- [ ] 5.5 Scripts composer `lint`, `analyse`, `test` como fuente única; `make lint` / `make test` los invocan
+- [x] 5.1 Instalar y configurar Pint (preset laravel) y añadir hook local de Pint en pre-commit (vía contenedor o binario de vendor)
+- [x] 5.2 Larastan nivel 8 sin baseline y corregir hallazgos del código del kit
+- [x] 5.3 Mantener PHPUnit (el del kit, decisión del usuario); `phpunit.xml` apuntando a Postgres (`deliberia_test`) creado por el entorno Docker
+- [x] 5.4 Revisar `vp check` y `tsc --noEmit` del kit (formato limitado al código); scripts npm `check` y `types:check`
+- [x] 5.5 Scripts composer `lint:check`, `types:check`, `test` y npm `check`, `types:check` como fuente única; `make lint` / `make test` los invocan
 - [ ] 5.6 Documentar en ADR-0001 la convención de integraciones externas detrás de interfaces con fakes en tests
-- [ ] 5.7 Commit `chore(quality): configure formatting, static analysis and tests`
+- [x] 5.7 Commit `chore(quality): configure formatting, static analysis and tests`
 
 ## 6. CI en GitHub Actions
 
 - [ ] 6.1 Crear `.github/workflows/ci.yml`: `on: push` + `pull_request` a main, `permissions: contents: read`, `concurrency` por rama
 - [ ] 6.2 Job `secrets`: checkout `fetch-depth: 0` + gitleaks sobre historial completo (versión fijada)
-- [ ] 6.3 Job `php-quality` (Pint `--test`, Larastan) y job `js-quality` (Prettier check, ESLint, tsc) con caché
-- [ ] 6.4 Job `tests` con service containers postgres:17 y redis; Pest + `npm run build`
+- [ ] 6.3 Job `php-quality` (Pint `--test`, Larastan) y job `js-quality` (`vp check`, `tsc`) con caché
+- [ ] 6.4 Job `tests` con service containers postgres:17 y redis; PHPUnit + `npm run build`
 - [ ] 6.5 Validar localmente el workflow (p. ej. `act` si disponible o revisión con `actionlint`) y dejar comprobación real para tras el primer push
 - [ ] 6.6 Commit `ci: add quality and secret scanning pipeline`
 

@@ -38,15 +38,16 @@ Servicios de `compose.yaml`:
 
 | Servicio | Imagen | Rol |
 |---|---|---|
-| `app` | Dockerfile propio (php:8.4/8.5-fpm o FrankenPHP) | Servidor HTTP y artisan |
+| `app` | Dockerfile propio (php:8.4-cli + Node + Composer) | Servidor HTTP (`artisan serve`) y artisan |
 | `worker` | misma imagen | `php artisan queue:work` |
 | `db` | `postgres:17-alpine` | BD. Volumen con nombre; healthcheck |
 | `redis` | `redis:7-alpine` | Colas y caché |
-| `vite` | `node:24-alpine` | Dev server con HMR |
+| `vite` | misma imagen que `app` (el plugin de Wayfinder ejecuta `php artisan`) | Dev server con HMR; healthcheck |
 
+- La app se sirve con `php artisan serve` (solo desarrollo; no hay PHP-FPM ni FrankenPHP).
 - Un `docker/entrypoint.sh` idempotente hace lo siguiente: crea `.env` desde `.env.example` si no existe, ejecuta `composer install`, genera `APP_KEY` si falta, espera a la BD y aplica las migraciones.
 - Comando único: `docker compose up` (alias `make up`). El `Makefile` ofrece `up`, `down`, `test`, `lint`, `fix`, `shell`, `user` y `logs`. En Windows hay una alternativa documentada sin `make`, solo con `docker compose ...`.
-- Los puertos se publican solo en `127.0.0.1` para no exponer Postgres ni Redis en la red local.
+- Los puertos se publican solo en `127.0.0.1` y son configurables; por defecto 8100 (app), 5180 (Vite), 5440 (Postgres) y 6390 (Redis) para no chocar con otras instalaciones locales.
 - La versión de PHP se fija a la que soporte Laravel 13 con todas las extensiones (`pdo_pgsql`, `redis`, `intl`, `zip`). Se decide en la tarea de Dockerfile y se registra en ADR-0001.
 - **Alternativa descartada:** Sail necesita `composer install` previo en el host y está pensado solo para desarrollo.
 
@@ -65,12 +66,14 @@ Servicios de `compose.yaml`:
 | Ámbito | Herramienta | Configuración |
 |---|---|---|
 | Formato PHP | Laravel Pint | preset `laravel` |
-| Análisis estático PHP | Larastan | nivel 8 inicial (subir a `max` cuando sea viable), sin baseline |
-| Tests PHP | Pest 4 | Feature + Unit, Postgres real |
-| Formato y lint JS/TS | Prettier + ESLint | config del starter kit |
+| Análisis estático PHP | Larastan | nivel 8, sin baseline |
+| Tests PHP | PHPUnit 12 (el del starter kit) | Feature + Unit, Postgres real (`deliberia_test`, forzada en `phpunit.xml`) |
+| Formato y lint JS/TS | Vite+ (`vp check`: oxlint + oxfmt) | config del starter kit; limitado al código (no formatea docs ni `.claude/`) |
 | Tipos | `tsc --noEmit` | strict |
 
-Los scripts de `composer` (`lint`, `analyse`, `test`) y de `npm` (`lint`, `format:check`, `types`) son la **única** fuente de verdad. CI, el Makefile y los hooks los invocan, nunca duplican flags.
+> Decisión (implementación, 2026-11-12): se adoptan las herramientas del starter kit oficial de Laravel 13 en lugar de Pest, ESLint y Prettier, para no mantener dependencias extra ni divergir del kit.
+
+Los scripts de `composer` (`lint:check`, `types:check`, `test`) y de `npm` (`check`, `types:check`) son la **única** fuente de verdad. CI, el Makefile y los hooks los invocan, nunca duplican flags.
 
 ### D6. Protección de datos sensibles (máxima prioridad)
 Capas de defensa:
@@ -103,8 +106,8 @@ Capas de defensa:
 - Jobs:
   - `secrets` (gitleaks).
   - `php-quality` (Pint `--test` y Larastan).
-  - `js-quality` (Prettier check, ESLint y tsc).
-  - `tests`, que depende de `secrets` y usa un service container `postgres:17` y `redis`. Ejecuta Pest y `npm run build` para detectar roturas de Vite.
+  - `js-quality` (`vp check` y `tsc`).
+  - `tests`, que depende de `secrets` y usa un service container `postgres:17` y `redis`. Ejecuta PHPUnit y `npm run build` para detectar roturas de Vite.
 - Caché de Composer y npm. Las acciones de terceros se fijan por versión mayor (o SHA en el caso de gitleaks).
 - `concurrency` por rama, con cancelación de ejecuciones obsoletas.
 

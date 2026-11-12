@@ -19,6 +19,15 @@ repos:
       - id: trailing-whitespace
         args: ["--markdown-linebreak-ext=md"]
 
+  # Formato PHP (Pint) usando el contenedor de la app.
+  - repo: local
+    hooks:
+      - id: pint
+        name: Pint (PHP formatting via Docker)
+        entry: bash docker/hooks/pint.sh
+        language: system
+        types: [php]
+
   # Conventional Commits 1.0.0 (hook de commit-msg, sin Node).
   - repo: https://github.com/compilerla/conventional-pre-commit
     rev: v4.5.0

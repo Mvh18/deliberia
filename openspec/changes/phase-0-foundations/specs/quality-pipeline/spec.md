@@ -5,7 +5,7 @@ El proyecto SHALL exponer scripts únicos para formato, análisis estático, tip
 
 #### Scenario: Ejecución local
 - **WHEN** el desarrollador ejecuta `make lint` y `make test`
-- **THEN** se ejecutan Pint (modo verificación), Larastan, Prettier, ESLint, `tsc` y Pest con los mismos parámetros que en CI
+- **THEN** se ejecutan Pint (modo verificación), Larastan, `vp check`, `tsc` y los tests con los mismos parámetros que en CI
 
 ### Requirement: CI en cada push
 Un workflow de GitHub Actions SHALL ejecutarse en cada push y en cada pull request hacia `main`, con permisos de solo lectura por defecto.
@@ -26,7 +26,7 @@ El CI MUST fallar si hay errores de formato, de análisis estático, de tipos, t
 - **THEN** el job de calidad PHP falla
 
 #### Scenario: Test roto
-- **WHEN** un test de Pest falla
+- **WHEN** un test falla
 - **THEN** el job de tests falla
 
 ### Requirement: Tests contra PostgreSQL real
