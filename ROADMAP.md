@@ -24,13 +24,13 @@ Este documento describe **qué** se va a construir y **por qué**. No define **c
 Fuente de verdad del avance. Actualizar al empezar y al cerrar cada fase, y al marcar criterios de aceptación.
 Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa con contenido real durante dos semanas) → `terminada`.
 
-*Última actualización: 2026-11-11.*
+*Última actualización: 2026-11-13.*
 
 ### Progreso por fase
 
 | Fase | Estado | Progreso | Tareas | Criterios de aceptación | Change de OpenSpec | Epic | Uso real |
 |---|---|---|---|---|---|---|---|
-| 0 — Fundaciones | en uso real | `██████████` 100 % | 54 / 54 | 3 / 4 | `phase-0-foundations` | — | 2026-11-11 → 2026-11-25 |
+| 0 — Fundaciones | en uso real | `██████████` 100 % | 54 / 54 | 4 / 4 | `phase-0-foundations` | [#5](https://github.com/Mvh18/deliberia/issues/5) | 2026-11-11 → 2026-11-25 |
 | 1 — MVP: biblioteca y práctica externa | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 7 | — | — | — |
 | 2 — Seguimiento real del video | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 6 | — | — | — |
 | 3 — Retención | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
@@ -51,7 +51,7 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 | Seguridad del repo | `.gitignore` estricto, hooks de pre-commit (gitleaks, claves privadas, Pint, Conventional Commits), commits con correo noreply, auditoría previa a publicar, `SECURITY.md`, secret scanning y push protection |
 | Proceso | GitHub Flow, ADR-0001 (stack) y ADR-0002 (secretos y flujo), [docs/WORKFLOW.md](docs/WORKFLOW.md), plantillas de issue y PR, Dependabot, licencia MIT |
 
-**Pendiente de la Fase 0:** comprobar en GitHub que el CI *falla* ante un error provocado (hasta ahora solo se ha visto pasar en verde; los fallos se probaron en local), y completar las dos semanas de uso real.
+**Pendiente de la Fase 0:** integrar el PR #4 (repara el CI de main), hacer los ajustes manuales en GitHub de abajo y completar las dos semanas de uso real (hasta el 2026-11-25).
 
 ### Para continuar mañana
 
@@ -62,12 +62,9 @@ La Fase 0 está construida y publicada; lo que queda es cerrarla bien y esperar 
    - Settings → Emails → activar *Block command line pushes that expose my email*.
    - Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`).
    - Security → activar *Dependabot security updates* (hoy figuran desactivadas).
-3. **Revisar los 3 PRs de Dependabot** ya abiertos en GitHub. Aceptar uno solo si el CI pasa en verde:
-   - `#1` PHP 8.4 → 8.5 en la imagen de Docker (cambio mayor; si se acepta, actualizar también `PHP_VERSION` en `.github/workflows/ci.yml` y ADR-0001).
-   - `#2` PHPUnit 12 → 13 (cambio mayor).
-   - `#3` actualizaciones de npm (8 paquetes).
-4. **Comprobar que el CI falla de verdad** (último criterio de la Fase 0): crear una rama con un error de formato o un test roto, verificar que el CI se pone en rojo, y borrar la rama. Después marcar el criterio en la sección de la Fase 0 y actualizar el contador de la tabla (4 / 4).
-5. **Crear la issue epic de la Fase 0** con la plantilla `epic`, enlazarla en la columna *Epic* de la tabla y guardar ahí las sub-issues si hace falta.
+3. ~~Revisar los 3 PRs de Dependabot.~~ Hecho: integrados (PHP 8.5, PHPUnit 13, npm). El de npm dejó main en rojo (alias de vite desalineado con vite-plus 1.5.0); se repara en el PR #4, que también alinea `PHP_VERSION` del CI y ADR-0001 con PHP 8.5. **Pendiente: integrar el PR #4.**
+4. ~~Comprobar que el CI falla de verdad.~~ Hecho el 2026-11-13: una rama con formato roto puso en rojo el paso Pint; la rama ya está borrada.
+5. ~~Crear la issue epic de la Fase 0.~~ Hecho: [#5](https://github.com/Mvh18/deliberia/issues/5).
 6. **Usar la app** hasta el **2026-11-25**. Es el periodo de uso real que exige la regla de las dos semanas.
 7. **2026-11-25 en adelante:** pasar la Fase 0 a `terminada`, archivar el change (`/opsx:archive`) y empezar la Fase 1 con `/opsx:propose-deep`. No se empieza antes: el ROADMAP pide completar los criterios y el uso real de la fase anterior.
 
@@ -160,7 +157,7 @@ Aplican a todas las fases.
 
 - [x] Cualquier persona puede levantar el proyecto con un solo comando siguiendo el README.
 - [x] Se puede iniciar y cerrar sesión.
-- [ ] El CI falla si hay errores de formato, de análisis estático o tests rotos. *(configurado y en verde; falta provocar un fallo en GitHub para comprobarlo)*
+- [x] El CI falla si hay errores de formato, de análisis estático o tests rotos. *(comprobado en GitHub el 2026-11-13 con un fallo de Pint provocado)*
 - [x] Existe al menos un ADR con las decisiones iniciales del stack.
 
 ---
