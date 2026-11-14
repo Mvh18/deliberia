@@ -21,7 +21,7 @@ El desarrollador conoce Laravel/PHP y las katas de code review de la Fase 4C son
 
 | Capa | Elección |
 |---|---|
-| Backend | **Laravel 13** (PHP 8.4 en la imagen de desarrollo) |
+| Backend | **Laravel 13** (PHP 8.5 en la imagen de desarrollo) |
 | Autenticación | **Laravel Fortify**, con el registro deshabilitado y usuarios creados con `php artisan deliberia:user:create` |
 | Frontend | **Inertia 3 + React 19 + TypeScript + Tailwind 4 + shadcn/ui** (starter kit oficial de Laravel 13) |
 | Base de datos | **PostgreSQL 17** |
