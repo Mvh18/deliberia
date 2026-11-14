@@ -51,18 +51,18 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 | Seguridad del repo | `.gitignore` estricto, hooks de pre-commit (gitleaks, claves privadas, Pint, Conventional Commits), commits con correo noreply, auditoría previa a publicar, `SECURITY.md`, secret scanning y push protection |
 | Proceso | GitHub Flow, ADR-0001 (stack) y ADR-0002 (secretos y flujo), [docs/WORKFLOW.md](docs/WORKFLOW.md), plantillas de issue y PR, Dependabot, licencia MIT |
 
-**Pendiente de la Fase 0:** integrar el PR #4 (repara el CI de main), hacer los ajustes manuales en GitHub de abajo y completar las dos semanas de uso real (hasta el 2026-11-25).
+**Pendiente de la Fase 0:** activar *Private vulnerability reporting* en GitHub y completar las dos semanas de uso real (hasta el 2026-11-25).
 
 ### Para continuar mañana
 
 La Fase 0 está construida y publicada; lo que queda es cerrarla bien y esperar el periodo de uso real. Orden sugerido:
 
 1. **Levantar el entorno y crear tu usuario** (si no lo has hecho): `docker compose up -d --build --wait` y `docker compose exec app php artisan deliberia:user:create`; entra en <http://localhost:8100>.
-2. **Ajustes manuales pendientes en GitHub:**
-   - Settings → Emails → activar *Block command line pushes that expose my email*.
-   - Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`).
-   - Security → activar *Dependabot security updates* (hoy figuran desactivadas).
-3. ~~Revisar los 3 PRs de Dependabot.~~ Hecho: integrados (PHP 8.5, PHPUnit 13, npm). El de npm dejó main en rojo (alias de vite desalineado con vite-plus 1.5.0); se repara en el PR #4, que también alinea `PHP_VERSION` del CI y ADR-0001 con PHP 8.5. **Pendiente: integrar el PR #4.**
+2. **Ajustes manuales en GitHub:**
+   - ~~Settings → Emails → activar *Block command line pushes that expose my email*.~~ Hecho el 2026-11-13.
+   - ~~Activar *Dependabot alerts* y *Dependabot security updates*.~~ Hecho el 2026-11-13.
+   - **Pendiente:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). Comprobar que en la pestaña Security aparece *Report a vulnerability*.
+3. ~~Revisar los 3 PRs de Dependabot.~~ Hecho: integrados (PHP 8.5, PHPUnit 13, npm). El de npm dejó main en rojo (alias de vite desalineado con vite-plus 1.5.0); se reparó en el PR #4, que también alinea `PHP_VERSION` del CI y ADR-0001 con PHP 8.5. CI de main en verde de nuevo.
 4. ~~Comprobar que el CI falla de verdad.~~ Hecho el 2026-11-13: una rama con formato roto puso en rojo el paso Pint; la rama ya está borrada.
 5. ~~Crear la issue epic de la Fase 0.~~ Hecho: [#5](https://github.com/Mvh18/deliberia/issues/5).
 6. **Usar la app** hasta el **2026-11-25**. Es el periodo de uso real que exige la regla de las dos semanas.
