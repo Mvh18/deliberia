@@ -24,13 +24,13 @@ Este documento describe **qué** se va a construir y **por qué**. No define **c
 Fuente de verdad del avance. Actualizar al empezar y al cerrar cada fase, y al marcar criterios de aceptación.
 Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa con contenido real durante dos semanas) → `terminada`.
 
-*Última actualización: 2026-11-13.*
+*Última actualización: 2026-11-14.*
 
 ### Progreso por fase
 
 | Fase | Estado | Progreso | Tareas | Criterios de aceptación | Change de OpenSpec | Epic | Uso real |
 |---|---|---|---|---|---|---|---|
-| 0 — Fundaciones | en uso real | `██████████` 100 % | 54 / 54 | 4 / 4 | `phase-0-foundations` | [#5](https://github.com/Mvh18/deliberia/issues/5) | 2026-11-11 → 2026-11-25 |
+| 0 — Fundaciones | terminada | `██████████` 100 % | 54 / 54 | 4 / 4 | `phase-0-foundations` (archivado) | [#5](https://github.com/Mvh18/deliberia/issues/5) | omitido (excepción) |
 | 1 — MVP: biblioteca y práctica externa | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 7 | — | — | — |
 | 2 — Seguimiento real del video | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 6 | — | — | — |
 | 3 — Retención | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
@@ -51,22 +51,14 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 | Seguridad del repo | `.gitignore` estricto, hooks de pre-commit (gitleaks, claves privadas, Pint, Conventional Commits), commits con correo noreply, auditoría previa a publicar, `SECURITY.md`, secret scanning y push protection |
 | Proceso | GitHub Flow, ADR-0001 (stack) y ADR-0002 (secretos y flujo), [docs/WORKFLOW.md](docs/WORKFLOW.md), plantillas de issue y PR, Dependabot, licencia MIT |
 
-**Pendiente de la Fase 0:** activar *Private vulnerability reporting* en GitHub y completar las dos semanas de uso real (hasta el 2026-11-25).
+**Cierre de la Fase 0 (2026-11-14):** todos los criterios cumplidos y el change archivado en `openspec/changes/archive/2026-11-14-phase-0-foundations/`, con sus specs sincronizados en `openspec/specs/`. **Excepción:** por decisión del responsable del proyecto se omitió el periodo de dos semanas de uso real; la Fase 0 no tiene funcionalidades de producto que validar con contenido real. La regla sigue vigente para las demás fases.
 
-### Para continuar mañana
+Durante el cierre se encontró y corrigió un fallo real: tras integrar los PRs de Dependabot, main quedó en rojo por un alias de vite desalineado con vite-plus 1.5.0; se reparó en el PR #4, que además alinea el CI y ADR-0001 con PHP 8.5.
 
-La Fase 0 está construida y publicada; lo que queda es cerrarla bien y esperar el periodo de uso real. Orden sugerido:
+### Siguiente paso
 
-1. **Levantar el entorno y crear tu usuario** (si no lo has hecho): `docker compose up -d --build --wait` y `docker compose exec app php artisan deliberia:user:create`; entra en <http://localhost:8100>.
-2. **Ajustes manuales en GitHub:**
-   - ~~Settings → Emails → activar *Block command line pushes that expose my email*.~~ Hecho el 2026-11-13.
-   - ~~Activar *Dependabot alerts* y *Dependabot security updates*.~~ Hecho el 2026-11-13.
-   - **Pendiente:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). Comprobar que en la pestaña Security aparece *Report a vulnerability*.
-3. ~~Revisar los 3 PRs de Dependabot.~~ Hecho: integrados (PHP 8.5, PHPUnit 13, npm). El de npm dejó main en rojo (alias de vite desalineado con vite-plus 1.5.0); se reparó en el PR #4, que también alinea `PHP_VERSION` del CI y ADR-0001 con PHP 8.5. CI de main en verde de nuevo.
-4. ~~Comprobar que el CI falla de verdad.~~ Hecho el 2026-11-13: una rama con formato roto puso en rojo el paso Pint; la rama ya está borrada.
-5. ~~Crear la issue epic de la Fase 0.~~ Hecho: [#5](https://github.com/Mvh18/deliberia/issues/5).
-6. **Usar la app** hasta el **2026-11-25**. Es el periodo de uso real que exige la regla de las dos semanas.
-7. **2026-11-25 en adelante:** pasar la Fase 0 a `terminada`, archivar el change (`/opsx:archive`) y empezar la Fase 1 con `/opsx:propose-deep`. No se empieza antes: el ROADMAP pide completar los criterios y el uso real de la fase anterior.
+1. **Fase 1:** diseñarla con `/opsx:propose-deep` (change `phase-1-...`), crear su issue epic y pasarla a `en diseño` en la tabla.
+2. **Pendiente menor en GitHub:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). No bloquea la Fase 1.
 
 Referencia rápida de cómo retomar el trabajo cada día: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
