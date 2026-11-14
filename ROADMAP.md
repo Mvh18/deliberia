@@ -31,7 +31,7 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 | Fase | Estado | Progreso | Tareas | Criterios de aceptación | Change de OpenSpec | Epic | Uso real |
 |---|---|---|---|---|---|---|---|
 | 0 — Fundaciones | terminada | `██████████` 100 % | 54 / 54 | 4 / 4 | `phase-0-foundations` (archivado) | [#5](https://github.com/Mvh18/deliberia/issues/5) | omitido (excepción) |
-| 1 — MVP: biblioteca y práctica externa | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 7 | — | — | — |
+| 1 — MVP: biblioteca y práctica externa | en diseño | `░░░░░░░░░░` 0 % | 0 / 55 | 0 / 7 | `phase-1-library-and-practice` | — | — |
 | 2 — Seguimiento real del video | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 6 | — | — | — |
 | 3 — Retención | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
 | 4 — Práctica interactiva | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 5 | — | — | — |
@@ -55,10 +55,31 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 
 Durante el cierre se encontró y corrigió un fallo real: tras integrar los PRs de Dependabot, main quedó en rojo por un alias de vite desalineado con vite-plus 1.5.0; se reparó en el PR #4, que además alinea el CI y ADR-0001 con PHP 8.5.
 
-### Siguiente paso
+### Fase 1 — diseño (2026-11-14)
 
-1. **Fase 1:** diseñarla con `/opsx:propose-deep` (change `phase-1-...`), crear su issue epic y pasarla a `en diseño` en la tabla.
-2. **Pendiente menor en GitHub:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). No bloquea la Fase 1.
+El change [`phase-1-library-and-practice`](openspec/changes/phase-1-library-and-practice/) está diseñado y validado: proposal, 8 specs, design y 55 tareas en 9 grupos. Decisiones tomadas en la entrevista de diseño (se documentarán en ADR-0003):
+
+| Tema | Decisión |
+|---|---|
+| Alcance | Un único change para toda la fase; un PR por grupo de tareas |
+| YouTube | Data API v3 con `YOUTUBE_API_KEY` opcional; sin key, oEmbed (sin duración, se edita a mano) |
+| LeetCode | GraphQL no oficial, desactivable (`LEETCODE_METADATA_ENABLED`); si falla, título desde el slug y edición manual |
+| Artículos y cursos | Cualquier URL `https` (nunca se descarga); la lista de dominios aplica solo a YouTube y LeetCode |
+| Conceptos | Una tabla `concepts` con `kind` (concepto / patrón); prerrequisitos sin ciclos |
+| Metadatos | Siempre en segundo plano (jobs en la cola); la interfaz refresca con `usePoll` |
+| Avance de rutas | Recurso `completed`; problema con al menos un intento `solved` |
+| NeetCode 150 | Comando `deliberia:path:import` desde un JSON |
+
+### Para continuar mañana
+
+1. **Empezar la implementación** con `/opsx:apply phase-1-library-and-practice`. El grupo 1 (preparación):
+   - Rama nueva desde `main` (los artefactos del change ya están en `main`).
+   - Crear la issue epic de la Fase 1 y sus 9 sub-issues; enlazar el epic en la tabla y pasar la fase a `en curso`.
+   - `openspec/config.yaml` → PHP 8.5 y PHPUnit 13; ADR-0003; `config/deliberia.php` y variables en `.env.example`; `Http::preventStrayRequests()` en el `TestCase`.
+2. **Después, un grupo por PR** en el orden de `tasks.md`: integraciones → recursos → conceptos → problemas e intentos → rutas → notas → panel → importación y cierre. Integrar cada PR con **squash** (convención de `openspec/config.yaml`) y solo con el CI en verde.
+3. **Opcional antes del grupo 3:** crear una API key de YouTube Data API v3 en Google Cloud (gratuita) y ponerla en `.env` como `YOUTUBE_API_KEY`; sin ella los videos se registran sin duración.
+4. **Antes del grupo 9:** preparar el JSON de NeetCode 150 (formato en `docs/examples/path-import.example.json`, que crea el grupo 9).
+5. **Pendiente menor en GitHub:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). No bloquea nada.
 
 Referencia rápida de cómo retomar el trabajo cada día: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
