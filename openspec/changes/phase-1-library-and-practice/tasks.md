@@ -9,13 +9,13 @@
 
 ## 2. URLs externas e integraciones
 
-- [ ] 2.1 `App\Support\ExternalUrls\YouTubeUrl::parse()` (watch, youtu.be, shorts, embed, m., con `t`/`list`; ID de 11 caracteres) y `LeetCodeUrl::parse()` (plataforma + slug; ignora subrutas, query, fragmento, `www.`, mayúsculas del host, barra final); rechazan userinfo, esquemas no http(s) y hosts que no coinciden exactamente
-- [ ] 2.2 Reglas de validación `SupportedVideoUrl` y `SupportedProblemUrl` con mensajes claros (dominio no soportado / no es un video / no es un problema)
-- [ ] 2.3 Tests unitarios de los parsers con variantes válidas, engaños de host (`youtube.com.evil.example.com`, `leetcode.com@evil.example.com`) y URLs que no son video/problema
-- [ ] 2.4 Interfaces `VideoMetadataProvider` y `ProblemMetadataProvider`, DTOs de solo lectura `VideoMetadata` y `ProblemMetadata` (solo campos permitidos)
-- [ ] 2.5 `YouTubeDataApiProvider` (videos.list, `snippet,contentDetails`, duración ISO 8601 → segundos), `YouTubeOEmbedProvider`, `LeetCodeGraphqlProvider` (title, difficulty, isPaidOnly), `DisabledProblemMetadataProvider`; timeout 5 s; binding según config en un service provider
-- [ ] 2.6 Fakes de ambos proveedores (respuesta correcta y fallo) y tests de los proveedores reales con `Http::fake()` (incluido descartar el enunciado si llega)
-- [ ] 2.7 Commit `feat(integrations): add URL parsing and metadata providers`
+- [x] 2.1 `App\Support\ExternalUrls\YouTubeUrl::parse()` (watch, youtu.be, shorts, embed, m., con `t`/`list`; ID de 11 caracteres) y `LeetCodeUrl::parse()` (plataforma + slug; ignora subrutas, query, fragmento, `www.`, mayúsculas del host, barra final); rechazan userinfo, esquemas no http(s) y hosts que no coinciden exactamente
+- [x] 2.2 Reglas de validación `SupportedVideoUrl` y `SupportedProblemUrl` con mensajes claros (dominio no soportado / no es un video / no es un problema)
+- [x] 2.3 Tests unitarios de los parsers con variantes válidas, engaños de host (`youtube.com.evil.example.com`, `leetcode.com@evil.example.com`) y URLs que no son video/problema
+- [x] 2.4 Interfaces `VideoMetadataProvider` y `ProblemMetadataProvider`, DTOs de solo lectura `VideoMetadata` y `ProblemMetadata` (solo campos permitidos)
+- [x] 2.5 `YouTubeDataApiProvider` (videos.list, `snippet,contentDetails`, duración ISO 8601 → segundos), `YouTubeOEmbedProvider`, `LeetCodeGraphqlProvider` (title, difficulty, isPaidOnly), `DisabledProblemMetadataProvider`; timeout 5 s; binding según config en un service provider
+- [x] 2.6 Fakes de ambos proveedores (respuesta correcta y fallo) y tests de los proveedores reales con `Http::fake()` (incluido descartar el enunciado si llega)
+- [x] 2.7 Commit `feat(integrations): add URL parsing and metadata providers`
 
 ## 3. Recursos de aprendizaje
 
