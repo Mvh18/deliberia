@@ -7,9 +7,9 @@ context: |
   El repositorio es PÚBLICO y open source: nunca incluir secretos, correos reales ni rutas
   personales en archivos versionados; usar dominios reservados (example.com) en tests.
 
-  Stack: Laravel 13 (PHP 8.4), Fortify (registro deshabilitado), Inertia 3 + React 19 +
+  Stack: Laravel 13 (PHP 8.5), Fortify (registro deshabilitado), Inertia 3 + React 19 +
   TypeScript, Tailwind 4, shadcn/ui, PostgreSQL 17, Redis 7, Docker Compose (make up).
-  Calidad: Pint, Larastan nivel 8 (sin baseline), PHPUnit 12, Vite+ (`vp check`), `tsc`.
+  Calidad: Pint, Larastan nivel 8 (sin baseline), PHPUnit 13, Vite+ (`vp check`), `tsc`.
   Tests contra PostgreSQL real (deliberia_test). CI en GitHub Actions.
   Decisiones: docs/adr/. Flujo de trabajo: docs/WORKFLOW.md.
 
