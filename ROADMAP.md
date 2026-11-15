@@ -24,14 +24,14 @@ Este documento describe **qué** se va a construir y **por qué**. No define **c
 Fuente de verdad del avance. Actualizar al empezar y al cerrar cada fase, y al marcar criterios de aceptación.
 Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa con contenido real durante dos semanas) → `terminada`.
 
-*Última actualización: 2026-11-14.*
+*Última actualización: 2026-11-15.*
 
 ### Progreso por fase
 
 | Fase | Estado | Progreso | Tareas | Criterios de aceptación | Change de OpenSpec | Epic | Uso real |
 |---|---|---|---|---|---|---|---|
 | 0 — Fundaciones | terminada | `██████████` 100 % | 54 / 54 | 4 / 4 | `phase-0-foundations` (archivado) | [#5](https://github.com/Mvh18/deliberia/issues/5) | omitido (excepción) |
-| 1 — MVP: biblioteca y práctica externa | en diseño | `░░░░░░░░░░` 0 % | 0 / 55 | 0 / 7 | `phase-1-library-and-practice` | — | — |
+| 1 — MVP: biblioteca y práctica externa | en curso | `█░░░░░░░░░` 9 % | 6 / 55 | 0 / 7 | `phase-1-library-and-practice` | [#18](https://github.com/Mvh18/deliberia/issues/18) | — |
 | 2 — Seguimiento real del video | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 6 | — | — | — |
 | 3 — Retención | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
 | 4 — Práctica interactiva | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 5 | — | — | — |
