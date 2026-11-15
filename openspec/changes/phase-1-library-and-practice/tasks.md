@@ -1,6 +1,6 @@
 ## 1. Preparación y decisiones
 
-- [ ] 1.1 Crear la issue epic de la Fase 1 con la plantilla `epic` y una sub-issue por grupo de este archivo; enlazar el epic en la tabla de Estado del ROADMAP y pasar la Fase 1 a `en curso`
+- [x] 1.1 Crear la issue epic de la Fase 1 con la plantilla `epic` y una sub-issue por grupo de este archivo; enlazar el epic en la tabla de Estado del ROADMAP y pasar la Fase 1 a `en curso`
 - [x] 1.2 Actualizar `openspec/config.yaml`: PHP 8.5, PHPUnit 13
 - [x] 1.3 Escribir `docs/adr/0003-phase-1-domain-and-integrations.md` (polimorfismo con morph map y diario en `attempts`, lista de dominios solo para URLs consultadas, proveedores + jobs con LeetCode no oficial opcional, polling de Inertia)
 - [x] 1.4 Crear `config/deliberia.php` (hosts permitidos, `youtube.api_key`, `leetcode.metadata_enabled`) y añadir `YOUTUBE_API_KEY=` (vacía) y `LEETCODE_METADATA_ENABLED=true` a `.env.example` con comentarios
