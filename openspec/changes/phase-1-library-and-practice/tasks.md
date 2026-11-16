@@ -1,21 +1,21 @@
 ## 1. Preparación y decisiones
 
-- [ ] 1.1 Crear la issue epic de la Fase 1 con la plantilla `epic` y una sub-issue por grupo de este archivo; enlazar el epic en la tabla de Estado del ROADMAP y pasar la Fase 1 a `en curso`
-- [ ] 1.2 Actualizar `openspec/config.yaml`: PHP 8.5, PHPUnit 13
-- [ ] 1.3 Escribir `docs/adr/0003-phase-1-domain-and-integrations.md` (polimorfismo con morph map y diario en `attempts`, lista de dominios solo para URLs consultadas, proveedores + jobs con LeetCode no oficial opcional, polling de Inertia)
-- [ ] 1.4 Crear `config/deliberia.php` (hosts permitidos, `youtube.api_key`, `leetcode.metadata_enabled`) y añadir `YOUTUBE_API_KEY=` (vacía) y `LEETCODE_METADATA_ENABLED=true` a `.env.example` con comentarios
-- [ ] 1.5 Añadir `Http::preventStrayRequests()` al `TestCase` base
-- [ ] 1.6 Commit `docs: add ADR-0003 and phase 1 configuration`
+- [x] 1.1 Crear la issue epic de la Fase 1 con la plantilla `epic` y una sub-issue por grupo de este archivo; enlazar el epic en la tabla de Estado del ROADMAP y pasar la Fase 1 a `en curso`
+- [x] 1.2 Actualizar `openspec/config.yaml`: PHP 8.5, PHPUnit 13
+- [x] 1.3 Escribir `docs/adr/0003-phase-1-domain-and-integrations.md` (polimorfismo con morph map y diario en `attempts`, lista de dominios solo para URLs consultadas, proveedores + jobs con LeetCode no oficial opcional, polling de Inertia)
+- [x] 1.4 Crear `config/deliberia.php` (hosts permitidos, `youtube.api_key`, `leetcode.metadata_enabled`) y añadir `YOUTUBE_API_KEY=` (vacía) y `LEETCODE_METADATA_ENABLED=true` a `.env.example` con comentarios
+- [x] 1.5 Añadir `Http::preventStrayRequests()` al `TestCase` base
+- [x] 1.6 Commit `docs: add ADR-0003 and phase 1 configuration`
 
 ## 2. URLs externas e integraciones
 
-- [ ] 2.1 `App\Support\ExternalUrls\YouTubeUrl::parse()` (watch, youtu.be, shorts, embed, m., con `t`/`list`; ID de 11 caracteres) y `LeetCodeUrl::parse()` (plataforma + slug; ignora subrutas, query, fragmento, `www.`, mayúsculas del host, barra final); rechazan userinfo, esquemas no http(s) y hosts que no coinciden exactamente
-- [ ] 2.2 Reglas de validación `SupportedVideoUrl` y `SupportedProblemUrl` con mensajes claros (dominio no soportado / no es un video / no es un problema)
-- [ ] 2.3 Tests unitarios de los parsers con variantes válidas, engaños de host (`youtube.com.evil.example.com`, `leetcode.com@evil.example.com`) y URLs que no son video/problema
-- [ ] 2.4 Interfaces `VideoMetadataProvider` y `ProblemMetadataProvider`, DTOs de solo lectura `VideoMetadata` y `ProblemMetadata` (solo campos permitidos)
-- [ ] 2.5 `YouTubeDataApiProvider` (videos.list, `snippet,contentDetails`, duración ISO 8601 → segundos), `YouTubeOEmbedProvider`, `LeetCodeGraphqlProvider` (title, difficulty, isPaidOnly), `DisabledProblemMetadataProvider`; timeout 5 s; binding según config en un service provider
-- [ ] 2.6 Fakes de ambos proveedores (respuesta correcta y fallo) y tests de los proveedores reales con `Http::fake()` (incluido descartar el enunciado si llega)
-- [ ] 2.7 Commit `feat(integrations): add URL parsing and metadata providers`
+- [x] 2.1 `App\Support\ExternalUrls\YouTubeUrl::parse()` (watch, youtu.be, shorts, embed, m., con `t`/`list`; ID de 11 caracteres) y `LeetCodeUrl::parse()` (plataforma + slug; ignora subrutas, query, fragmento, `www.`, mayúsculas del host, barra final); rechazan userinfo, esquemas no http(s) y hosts que no coinciden exactamente
+- [x] 2.2 Reglas de validación `SupportedVideoUrl` y `SupportedProblemUrl` con mensajes claros (dominio no soportado / no es un video / no es un problema)
+- [x] 2.3 Tests unitarios de los parsers con variantes válidas, engaños de host (`youtube.com.evil.example.com`, `leetcode.com@evil.example.com`) y URLs que no son video/problema
+- [x] 2.4 Interfaces `VideoMetadataProvider` y `ProblemMetadataProvider`, DTOs de solo lectura `VideoMetadata` y `ProblemMetadata` (solo campos permitidos)
+- [x] 2.5 `YouTubeDataApiProvider` (videos.list, `snippet,contentDetails`, duración ISO 8601 → segundos), `YouTubeOEmbedProvider`, `LeetCodeGraphqlProvider` (title, difficulty, isPaidOnly), `DisabledProblemMetadataProvider`; timeout 5 s; binding según config en un service provider
+- [x] 2.6 Fakes de ambos proveedores (respuesta correcta y fallo) y tests de los proveedores reales con `Http::fake()` (incluido descartar el enunciado si llega)
+- [x] 2.7 Commit `feat(integrations): add URL parsing and metadata providers`
 
 ## 3. Recursos de aprendizaje
 
