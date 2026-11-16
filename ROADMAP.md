@@ -31,7 +31,7 @@ Estados: `pendiente` → `en diseño` → `en curso` → `en uso real` (se usa c
 | Fase | Estado | Progreso | Tareas | Criterios de aceptación | Change de OpenSpec | Epic | Uso real |
 |---|---|---|---|---|---|---|---|
 | 0 — Fundaciones | terminada | `██████████` 100 % | 54 / 54 | 4 / 4 | `phase-0-foundations` (archivado) | [#5](https://github.com/Mvh18/deliberia/issues/5) | omitido (excepción) |
-| 1 — MVP: biblioteca y práctica externa | en curso | `█░░░░░░░░░` 9 % | 6 / 55 | 0 / 7 | `phase-1-library-and-practice` | [#18](https://github.com/Mvh18/deliberia/issues/18) | — |
+| 1 — MVP: biblioteca y práctica externa | en curso | `██░░░░░░░░` 24 % | 13 / 55 | 0 / 7 | `phase-1-library-and-practice` | [#18](https://github.com/Mvh18/deliberia/issues/18) | — |
 | 2 — Seguimiento real del video | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 6 | — | — | — |
 | 3 — Retención | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 4 | — | — | — |
 | 4 — Práctica interactiva | pendiente | `░░░░░░░░░░` 0 % | — | 0 / 5 | — | — | — |
@@ -72,14 +72,20 @@ El change [`phase-1-library-and-practice`](openspec/changes/phase-1-library-and-
 
 ### Para continuar mañana
 
-1. **Empezar la implementación** con `/opsx:apply phase-1-library-and-practice`. El grupo 1 (preparación):
-   - Rama nueva desde `main` (los artefactos del change ya están en `main`).
-   - Crear la issue epic de la Fase 1 y sus 9 sub-issues; enlazar el epic en la tabla y pasar la fase a `en curso`.
-   - `openspec/config.yaml` → PHP 8.5 y PHPUnit 13; ADR-0003; `config/deliberia.php` y variables en `.env.example`; `Http::preventStrayRequests()` en el `TestCase`.
-2. **Después, un grupo por PR** en el orden de `tasks.md`: integraciones → recursos → conceptos → problemas e intentos → rutas → notas → panel → importación y cierre. Integrar cada PR con **squash** (convención de `openspec/config.yaml`) y solo con el CI en verde.
-3. **Opcional antes del grupo 3:** crear una API key de YouTube Data API v3 en Google Cloud (gratuita) y ponerla en `.env` como `YOUTUBE_API_KEY`; sin ella los videos se registran sin duración.
-4. **Antes del grupo 9:** preparar el JSON de NeetCode 150 (formato en `docs/examples/path-import.example.json`, que crea el grupo 9).
-5. **Pendiente menor en GitHub:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). No bloquea nada.
+**Estado (2026-11-15):** grupos 1 y 2 hechos (13 / 55 tareas), con el epic [#18](https://github.com/Mvh18/deliberia/issues/18) y las sub-issues #9 a #17 creadas. `composer test` pasa con 111 tests.
+
+| PR | Grupo | Rama | Estado |
+|---|---|---|---|
+| [#19](https://github.com/Mvh18/deliberia/pull/19) | 1. Preparación (ADR-0003, config, `TestCase`) | `docs/9-phase-1-preparation` | abierto, pendiente de integrar |
+| [#20](https://github.com/Mvh18/deliberia/pull/20) | 2. URLs e integraciones | `feat/10-url-parsing-and-providers` | abierto, apilado sobre #19 |
+
+1. **Integrar los PRs** con **squash** y solo con el CI en verde: primero #19; después rebasar la rama del #20 sobre `main` (`git rebase --onto main docs/9-phase-1-preparation`) y subirla con `--force-with-lease`; luego integrar #20. Cada rama nueva debe salir de `main` ya actualizado, para no apilar PRs.
+2. **Grupo 3: recursos de aprendizaje** con `/opsx:apply phase-1-library-and-practice` (sub-issue #11, rama `feat/11-resources`). Usa los fakes de `tests/Fakes/` y las interfaces de `app/Integrations/Metadata/`.
+3. **Después, un grupo por PR** en el orden de `tasks.md`: conceptos (#12) → problemas e intentos (#13) → rutas (#14) → notas (#15) → panel (#16) → importación y cierre (#17).
+4. **Entorno:** el disco C: está casi lleno (22 GB libres) por Docker (`docker_data.vhdx`, unos 184 GB). Antes de seguir, limpiar caché e imágenes sin uso con `docker builder prune -af` y `docker image prune -a`, y compactar el `.vhdx`. Si no, los tests pueden fallar a mitad.
+5. **Opcional antes del grupo 3:** crear una API key de YouTube Data API v3 en Google Cloud (gratuita) y ponerla en `.env` como `YOUTUBE_API_KEY`; sin ella los videos se registran sin duración.
+6. **Antes del grupo 9:** preparar el JSON de NeetCode 150 (formato en `docs/examples/path-import.example.json`, que crea el grupo 9).
+7. **Pendiente menor en GitHub:** Settings → Advanced Security → activar *Private vulnerability reporting* (lo usa `SECURITY.md`). No bloquea nada.
 
 Referencia rápida de cómo retomar el trabajo cada día: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
